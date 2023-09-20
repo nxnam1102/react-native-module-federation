@@ -7,8 +7,8 @@
     "ios": "react-native run-ios --simulator='iPhone 14 Pro Max' --port=8082",
     "lint": "eslint .",
     "test": "jest",
-    "start": "react-native webpack-start --port=8082",
-    "webpack-bundle": "react-native webpack-bundle",
+    "start": "react-native webpack-start --port=8082 --host 172.16.18.189",
+    "bundle": "react-native webpack-bundle --platform android --entry-file index.js --bundle-output dist/bundle.js",
     "webpack-combine": "webpack -c webpack.config.mjs --env platform=ios --env mode=production"
   },
   "dependencies": {

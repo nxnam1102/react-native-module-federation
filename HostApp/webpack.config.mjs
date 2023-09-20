@@ -242,6 +242,14 @@ export default env => {
           'react-native': {
             ...Repack.Federated.SHARED_REACT_NATIVE,
           },
+          '@react-navigation/native': {
+            singleton: true,
+            eager: true,
+          },
+          '@react-navigation/native-stack': {
+            singleton: true,
+            eager: true,
+          },
         },
       }),
     ],
