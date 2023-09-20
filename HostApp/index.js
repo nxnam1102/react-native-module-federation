@@ -9,8 +9,10 @@ import {name as appName} from './app.json';
 import {ScriptManager, Script, Federated} from '@callstack/repack/client';
 
 ScriptManager.shared.addResolver(async (scriptId, caller) => {
+  console.log('==============');
+  console.log(scriptId, caller);
   let dataRemote = await fetch(
-    'https://mocki.io/v1/fbc047e5-06b6-4744-a689-89496a4c0371',
+    'https://mocki.io/v1/a13ed0be-604c-424e-9f16-97ae461846c0',
   );
   let resultRemote = await dataRemote.json();
   let containers = {};
@@ -20,8 +22,7 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
       containers[row.name] = `${row.remote}/[name][ext]`;
     }
   }
-  console.log('=======');
-  console.log(containers);
+
   const resolveURL = Federated.createURLResolver({
     containers: containers,
   });
@@ -31,11 +32,10 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
   } else {
     url = resolveURL(scriptId, caller);
   }
-  console.log(url);
   if (!url) {
     return undefined;
   }
-
+  console.log(url);
   return {
     url,
     cache: false, // For development
